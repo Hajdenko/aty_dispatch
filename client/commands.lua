@@ -18,7 +18,7 @@ end)
 
 RegisterCommand("panic", function()
     if xPlayer == nil then xPlayer = ESX.GetPlayerData() Wait(250) end
-    if xPlayer == nil then exports['okokNotify']:Alert('Notifikace', 'Error in loading data.', 2500, 'error') return end
+    if xPlayer == nil then lib.notify({id = 'error_data',title = 'Notification',description = 'Error in loading data',position = 'top',style = {backgroundColor = '#141517',color = '#C1C2C5',['.description'] = {color = '#909296'}},icon = 'ban',iconColor = '#C53030'}) return end
 
     if xPlayer.job.name == 'police' or xPlayer.job.name == 'sheriff' or xPlayer.job.name == 'ambulance' then
         SendDispatch("Officer ".. playerName .." is in danger!", "10-99", 480, {"police", "sheriff", "ambulance"}, "panic.wav", true)
@@ -27,7 +27,7 @@ end)
 
 RegisterCommand("panicb", function(source)
     if xPlayer == nil then xPlayer = ESX.GetPlayerData() Wait(250) end
-    if xPlayer == nil then exports['okokNotify']:Alert('Notifikace', 'Error in loading data.', 2500, 'error') return end
+    if xPlayer == nil then lib.notify({id = 'error_data',title = 'Notification',description = 'Error in loading data',position = 'top',style = {backgroundColor = '#141517',color = '#C1C2C5',['.description'] = {color = '#909296'}},icon = 'ban',iconColor = '#C53030'}) return end
 
     if xPlayer.job.name == 'police' or xPlayer.job.name == 'sheriff' or xPlayer.job.name == 'ambulance' then
         SendDispatch("Officer ".. playerName .." is in car crash!", "10-99B", 480, {"police", "sheriff", "ambulance"}, "panic.wav", true)
@@ -36,7 +36,7 @@ end)
 
 RegisterCommand("panicc", function(source)
     if xPlayer == nil then xPlayer = ESX.GetPlayerData() Wait(250) end
-    if xPlayer == nil then exports['okokNotify']:Alert('Notifikace', 'Error in loading data.', 2500, 'error') return end
+    if xPlayer == nil then lib.notify({id = 'error_data',title = 'Notification',description = 'Error in loading data',position = 'top',style = {backgroundColor = '#141517',color = '#C1C2C5',['.description'] = {color = '#909296'}},icon = 'ban',iconColor = '#C53030'}) return end
 
     if xPlayer.job.name == 'police' or xPlayer.job.name == 'sheriff' or xPlayer.job.name == 'ambulance' then
         SendDispatch("Officer ".. playerName .." DOWN!", "10-100", 480, {"police", "sheriff", "ambulance"}, "panic.wav", true)
@@ -45,7 +45,7 @@ end)
 
 RegisterCommand("loc", function(source)
     if xPlayer == nil then xPlayer = ESX.GetPlayerData() Wait(250) end
-    if xPlayer == nil then exports['okokNotify']:Alert('Notifikace', 'Chyba v načítání dat.', 2500, 'error') return end
+    if xPlayer == nil then lib.notify({id = 'error_data',title = 'Notification',description = 'Error in loading data',position = 'top',style = {backgroundColor = '#141517',color = '#C1C2C5',['.description'] = {color = '#909296'}},icon = 'ban',iconColor = '#C53030'}) return end
 
     if xPlayer.job.name == 'police' or xPlayer.job.name == 'sheriff' or xPlayer.job.name == 'ambulance' then
         LocSendDispatch("Location of Officer ".. playerName .."", "10-20", 480, {"police", "sheriff", "ambulance"}, false)
