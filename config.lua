@@ -1,11 +1,12 @@
 Config = {
-    Framework = "qb", -- qb / esx
+    Framework = "esx", -- esx - this fork can only work on esx :/ (because i dont have a qb server)
     GPSItem = "gps",
     SetWaypoingKey = "G",
 
     WaitTimes = { -- Cooldown after a dispatch to send another one.
-        Shooting = 45, -- Seconds
-        Speeding = 60, -- Seconds
+        Shooting = 2, -- Second
+        Speeding = 10, -- Seconds
+        KradezAuta = 2, -- Seconds || Car Stolen - Translated from Czech
     },
 
     Enable = { -- Enable or disable built-in dispatches
@@ -22,7 +23,7 @@ Config = {
         "ambulance"
     },
 
-    BlipRemoveTime = 30, -- Seconds
+    BlipRemoveTime = 120, -- Seconds
 
     Notification = function(title, message, type, length)
         -- Your notification here
