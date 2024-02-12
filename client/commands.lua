@@ -1,12 +1,58 @@
-RegisterCommand("911", function()
-    SendDispatch("Citizen needs help!", "10-11", 61, {"police", "ambulance"})
+ESX = exports["es_extended"]:getSharedObject()
+
+local xPlayer = nil
+Citizen.CreateThread(function()
+    while true do
+        xPlayer = ESX.GetPlayerData()
+        if xPlayer ~= nil then
+            playerName  = xPlayer.firstName.. " " .. xPlayer.lastName
+        end
+
+        Wait(100)
+    end
 end)
 
-RegisterCommand("help", function()
-    SendDispatch("Citizen needs help!", "10-11", 61, {"police", "ambulance"})
+RegisterCommand("911", function(source)
+    SendDispatch("Citizen needs help!", "911", 682, {"police", "sheriff"})
 end)
 
-RegisterCommand("showDispatch", function()
+RegisterCommand("panic", function()
+    if xPlayer == nil then xPlayer = ESX.GetPlayerData() Wait(250) end
+    if xPlayer == nil then exports['okokNotify']:Alert('Notifikace', 'Error in loading data.', 2500, 'error') return end
+
+    if xPlayer.job.name == 'police' or xPlayer.job.name == 'sheriff' or xPlayer.job.name == 'ambulance' then
+        SendDispatch("Officer ".. playerName .." is in danger!", "10-99", 480, {"police", "sheriff", "ambulance"}, "panic.wav", true)
+    end
+end)
+
+RegisterCommand("panicb", function(source)
+    if xPlayer == nil then xPlayer = ESX.GetPlayerData() Wait(250) end
+    if xPlayer == nil then exports['okokNotify']:Alert('Notifikace', 'Error in loading data.', 2500, 'error') return end
+
+    if xPlayer.job.name == 'police' or xPlayer.job.name == 'sheriff' or xPlayer.job.name == 'ambulance' then
+        SendDispatch("Officer ".. playerName .." is in car crash!", "10-99B", 480, {"police", "sheriff", "ambulance"}, "panic.wav", true)
+    end
+end)
+
+RegisterCommand("panicc", function(source)
+    if xPlayer == nil then xPlayer = ESX.GetPlayerData() Wait(250) end
+    if xPlayer == nil then exports['okokNotify']:Alert('Notifikace', 'Error in loading data.', 2500, 'error') return end
+
+    if xPlayer.job.name == 'police' or xPlayer.job.name == 'sheriff' or xPlayer.job.name == 'ambulance' then
+        SendDispatch("Officer ".. playerName .." DOWN!", "10-100", 480, {"police", "sheriff", "ambulance"}, "panic.wav", true)
+    end
+end)
+
+RegisterCommand("loc", function(source)
+    if xPlayer == nil then xPlayer = ESX.GetPlayerData() Wait(250) end
+    if xPlayer == nil then exports['okokNotify']:Alert('Notifikace', 'Chyba v načítání dat.', 2500, 'error') return end
+
+    if xPlayer.job.name == 'police' or xPlayer.job.name == 'sheriff' or xPlayer.job.name == 'ambulance' then
+        LocSendDispatch("Location of Officer ".. playerName .."", "10-20", 480, {"police", "sheriff", "ambulance"}, false)
+    end
+end)
+
+RegisterCommand("showDispatch", function(source)
     for k, jobs in pairs(Config.WhitelistedJobs) do
         if PlayerJob == jobs then
             SendNUIMessage({
