@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATY DISPATCH</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main>
+        <div class="container"></div>
+        <div class="showDispatch"></div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // panicEffectCode
+        let panicEffectI = 0
+        function panicEffectColor() {
+            const el = document.querySelectorAll(".panicEffectCode")
+            panicEffectI = panicEffectI == 0 ? 1 : 0;
+            el.forEach(e => {
+                e.style.color = panicEffectI == 0 ? "#0055FF" : "#FF0000";
+            })
+            setTimeout(panicEffectColor, 750)
+        }
+        panicEffectColor()
+    </script>
+</body>
+</html>
