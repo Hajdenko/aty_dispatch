@@ -67,9 +67,9 @@ CreateThread(function()
         local gender
 
         if Config.Framework == "esx" then
-            if PlayerData.sex == 1 then gender = "Žena" else gender = "Muž" end
+            if PlayerData.sex == 1 then gender = "Female" else gender = "Male" end
         else
-            if PlayerData.charinfo.gender == 1 then gender = "Žena" else gender = "Muž" end
+            if PlayerData.charinfo.gender == 1 then gender = "Female" else gender = "Male" end
         end
 
         if IsPedShooting(GetPlayerPed(-1)) then
@@ -126,9 +126,9 @@ CreateThread(function()
                     local gender
 
                     if Config.Framework == "esx" then
-                        if PlayerData.sex == 1 then gender = "Žena" else gender = "Muž" end
+                        if PlayerData.sex == 1 then gender = "Female" else gender = "Male" end
                     else
-                        if PlayerData.charinfo.gender == 1 then gender = "Žena" else gender = "Muž" end
+                        if PlayerData.charinfo.gender == 1 then gender = "Female" else gender = "Male" end
                     end
 
                     ShootingDispatch(location, coords, gender, weapon, vehicleName, vehicleSpeed, vehicle, {"police", "sheriff"})
@@ -148,7 +148,7 @@ CreateThread(function()
                 -- TriggerServerEvent("aty_dispatch:server:printtheft")
                 TriggerServerEvent("aty_dispatch:server:kradez", vehicle, coords, vehicleName, playerName, ped)
 
-                SendDispatch("Krádež vozidla!", "10-16", 227, {"police", "sheriff"})
+                SendDispatch("Car Thief!", "10-16", 227, {"police", "sheriff"})
             else
                 local ped = GetPlayerPed(-1)
                 local coords = GetEntityCoords(ped)
@@ -156,7 +156,7 @@ CreateThread(function()
                 -- TriggerServerEvent("aty_dispatch:server:printtheft")
                 TriggerServerEvent("aty_dispatch:server:pokud_kradez", nil, coords, "vozidlo", playerName, ped)
 
-                SendDispatch("Pokus o krádež vozidla!", "10-16", 227, {"police", "sheriff"})
+                SendDispatch("Someone tried to steal a car!", "10-16", 227, {"police", "sheriff"})
             end
             Wait(2000)
         end
@@ -181,7 +181,7 @@ CreateThread(function()
                     end
 
                     if sendDispatch == true then
-                        SendDispatch("Vozidlo překročilo rychlost!", "10-66", 227, {"police", "sheriff"})
+                        SendDispatch("Speed Limit reached!", "10-66", 227, {"police", "sheriff"})
                     end
                     WaitTimes.Speeding = Config.WaitTimes.Speeding
                 end
@@ -214,10 +214,10 @@ AddEventHandler('gameEventTriggered', function(event, data)
                 
                 for _, jobs in pairs(Config.WhitelistedJobs) do
                     if PlayerJob == 'police' or PlayerJob == 'sheriff' and PlayerJob ~= "ambulance" then
-                        SendDispatch("Kolega ".. playerName .." DOWN!", "10-100", 480, {"police", "sheriff", "ambulance"}, "panic.wav", true)
+                        SendDispatch("Officer ".. playerName .." DOWN!", "10-100", 480, {"police", "sheriff", "ambulance"}, "panic.wav", true)
                         return
                     else
-                        SendDispatch("Civilista je v bezvědomí!", "10-10B", 61, {"police", "sheriff", "ambulance"})
+                        SendDispatch("Someone is in big danger!", "10-10B", 61, {"police", "sheriff", "ambulance"})
                         return
                     end
                 end
@@ -340,7 +340,7 @@ local Explosions = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,2
 AddEventHandler("explosionEvent", function(sender, ev)
     for _, v in ipairs(Explosions) do
       if ev.explosionType == v then
-        SendDispatch("Výbuch!", "Signal 8", 227, {"police", "sheriff"}, "beep.mp3", true)
+        SendDispatch("Explosion!", "Signal 8", 227, {"police", "sheriff"}, "beep.mp3", true)
         return
       end
     end
