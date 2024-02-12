@@ -1,6 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 author 'atiysu'
+description 'Sound and flash by Hajden'
 lua54 'yes'
 
 shared_scripts{
