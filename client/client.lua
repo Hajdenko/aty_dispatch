@@ -164,7 +164,7 @@ CreateThread(function()
         Wait(sleep)
 
         if Config.Enable.Speeding then
-            local insideCity = exports["fivestar"]:IsInsideCity(ped)
+            local insideCity = true -- you can add here a check function or export to check if the player is inside a city
             if IsPedInAnyVehicle(ped, 0) and not IsPedInAnyHeli(ped) and not IsPedInAnyPlane(ped) and not IsPedInAnyBoat(ped) and insideCity then
                 local vehicle = GetVehiclePedIsIn(ped, 0)
 
