@@ -1,6 +1,7 @@
 ESX = exports["es_extended"]:getSharedObject()
 
-local xPlayer = nil
+-- I don't think this still works so just add your own commands.
+--[[local xPlayer = nil
 Citizen.CreateThread(function()
     while true do
         xPlayer = ESX.GetPlayerData()
@@ -10,13 +11,13 @@ Citizen.CreateThread(function()
 
         Wait(100)
     end
-end)
+end)]]
 
 RegisterCommand("911", function(source)
     SendDispatch("Citizen needs help!", "911", 682, {"police", "sheriff"})
 end)
 
-RegisterCommand("panic", function()
+--[[RegisterCommand("panic", function()
     if xPlayer == nil then xPlayer = ESX.GetPlayerData() Wait(250) end
     if xPlayer == nil then Notification("Notification", "Error in loading data", 'error', 5000) return end
 
@@ -50,7 +51,7 @@ RegisterCommand("loc", function(source)
     if xPlayer.job.name == 'police' or xPlayer.job.name == 'sheriff' or xPlayer.job.name == 'ambulance' then
         LocSendDispatch("Location of Officer ".. playerName .."", "10-20", 480, {"police", "sheriff", "ambulance"}, false)
     end
-end)
+end)--]]
 
 RegisterCommand("showDispatch", function(source)
     for k, jobs in pairs(Config.WhitelistedJobs) do
