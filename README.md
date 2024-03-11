@@ -21,3 +21,8 @@ Join our Discord
 * Time for blip to remove after a dispatch
 ### BlipRemoveTime
 * Weapons that wont give an alert
+
+- Fork
+- You can only use this on ESX framework
+- No updates, because it is only version that I used and I officially published it because of peoples on forum post.
+- If nothing shows up, try reading the config. Btw you need a item and a job for it to show
