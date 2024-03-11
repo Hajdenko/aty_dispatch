@@ -22,7 +22,7 @@ Join our Discord
 ### BlipRemoveTime
 * Weapons that wont give an alert
 
-- Fork
+### Fork
 - You can only use this on ESX framework
 - No updates, because it is only version that I used and I officially published it because of peoples on forum post.
 - If nothing shows up, try reading the config. Btw you need a item and a job for it to show
